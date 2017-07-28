@@ -2,59 +2,19 @@
 #########################################################
 # These need to be adjusted per each dev environment
 #########################################################
-env_profile="ANDRE"
 ROOT_VOLUME_MOUNT_DIR="/c/Users/asochal/volumes"
 APP_NAME="hqr-dev-2"
-HQR_CODE_BASE_DIR="/c/Users/asochal/projects/svn/HQRService/branches/CR-4732"
-INHUB_CODE_BASE_DIR="/c/Users/asochal/projects/svn/IncHubService/branches/CR-4685"
-COMPUTE_ENGINE_BASE_DIR="/c/Users/asochal/projects/svn/HQRComputeEngine/trunk"
-DASHBOARD_BASE_DIR="/c/Users/asochal/projects/git/catalystutilities/inhub-admin"
-env_errorNotificationEmail="andre.sochal@bhnetwork.com"
 
 #########################################################
 # These are dynamically assigned by build process
 #########################################################
-env_redishost=
-env_rabbitmqhost=
 DOCKER_IP=
 DOCKER_HOST_NAME=
-env_inhubSvcBaseUrl=
-env_hqrSvcBaseUrl=
 
 #########################################################
 # These are fixed. No need to change.
 #########################################################
 DOCKER_HUB_USER="ansosoft"
-HQR_DATABASE_NAME="hqr"
-HQR_DB_USER="hqr_user"
-HQR_DB_PASSWORD="hqr_user"
-INHUB_DATABASE_NAME="inchub"
-INHUB_DB_USER="inchub_user"
-INHUB_DB_PASSWORD="inchub_user"
 DOCKER_VBOX_DRIVER="virtualbox"
 IMAGE_TAG="1"
-env_isbatch="true"
-env_catSecSvcBaseUrl="internal-QACatalystAppElb-559405783.us-west-2.elb.amazonaws.com"
-env_catBusSvcBaseUrl="internal-QACatalystAppElb-559405783.us-west-2.elb.amazonaws.com"
-env_catNotificationCallbackBaseUrl="QaCataspireAppElb-528355097.us-west-2.elb.amazonaws.com"
-env_catSecSvcAppToken="7e1d71a6-f7f1-4c19-84b2-200ceebf4bd4"
-env_awsEmrKeyName="aws2-qa-inchub-west-keypair"
-env_awsEmrSubnetId="subnet-e8761c9f"
-env_awsEmrLogUri="/spark"
-#env_awsEmrLogUri="s3://bes-compute-engine/QaAlt/spark/logs"
-env_awsEmrInstanceType="m1.medium"
-env_awsEmrInstanceCount="1"
-env_awsEmrAppUri="/spark"
-#env_awsEmrAppUri="s3://bes-compute-engine/QaAlt/spark/apps"
-env_awsEmrDataUri="/spark"
-#env_awsEmrDataUri="s3://bes-qaalt-hqr-files"
-env_errorNotificationSubject="ERROR - DEV"
-env_notificationFromEmail="HQRService@BHEngagement.com"
-env_asynchronousRabbitmqUsername="guest"
-env_asynchronousRabbitmqPassword="catalyst15"
-
-#########################################################
-# These are used for development only.
-#########################################################
-docker_wildfly_cluster_size=1
 
