@@ -21,8 +21,8 @@ init(){
 	INAME="notebooks"
 	IMAGE="${INAME}_i"
 	CONTAINER="${INAME}_c"
-	REMOTE_WILDFLY_SPARK_HADOOP_IMAGE=${DOCKER_HUB_USER}/${IMAGE}	
-	WILDFLY_SPARK_HADOOP_TAGGED_IMAGE=${REMOTE_WILDFLY_SPARK_HADOOP_IMAGE}:${IMAGE_TAG}
+	REMOTE_IMAGE=${DOCKER_HUB_USER}/${IMAGE}	
+	TAGGED_IMAGE=${REMOTE_IMAGE}:${IMAGE_TAG}
 }
 
 
@@ -37,6 +37,8 @@ start_container(){
 	docker $(cfg) stop ${CONTAINER} &>/dev/null || true
 	docker $(cfg) rm ${CONTAINER} &>/dev/null || true
 	
+	docker run -d -p 8888:8888 -p 54321:54321 ${TAGGED_IMAGE}	 
+	#docker run -d -p 8888:8888 -p 54321:54321 -v //c/Users/asochal/volumes/notebooks:/home/jovyan/work ${TAGGED_IMAGE}	 
 	#docker $(cfg) run -d -e ${ENV_ROLES} -e ${ENV_PORT} -e ${ENV_SEED_PORT}  --link ${RABBITMQ_CONTAINER}:${RABBITMQ} --link ${REDIS_CONTAINER}:${REDIS} --link ${POSTGRES_CONTAINER}:${POSTGRES} --name ${WILDFLY_SPARK_HADOOP_CONTAINER}_${c} -p 808${c}:8080 -p 878${c}:8787 -p 999${c}:9990 -p 998${c}:9999 -p ${port}:${port} -v ${LINK_ROOT_VOLUME_MOUNT_DIR}/wildfly/logs/${c}:/opt/jboss/wildfly/standalone/log -v ${LINK_ROOT_VOLUME_MOUNT_DIR}/wildfly/deployments/${c}:/opt/jboss/wildfly/standalone/deployments -v ${LINK_ROOT_VOLUME_MOUNT_DIR}/spark:/spark ${WILDFLY_SPARK_HADOOP_TAGGED_IMAGE}					
 }
 
