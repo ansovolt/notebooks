@@ -237,11 +237,11 @@ USER root
 # Spark dependencies
 ENV APACHE_SPARK_VERSION 2.0.2
 ENV HADOOP_VERSION 2.7
-RUN wget --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u5-b13/jdk-8u5-linux-x64.tar.gz
-RUN mkdir /opt/jdk
-RUN tar -zxf jdk-8u5-linux-x64.tar.gz -C /opt/jdk
-RUN update-alternatives --install /usr/bin/java java /opt/jdk/jdk1.8.0_05/bin/java 100
-RUN update-alternatives --install /usr/bin/javac javac /opt/jdk/jdk1.8.0_05/bin/javac 100
+RUN wget --no-cookies --no-check-certificate --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u144-b01/090f390dda5b47b9b721c7dfaa008135/jdk-8u144-linux-x64.tar.gz -O jdk-8u144-linux-x64.tar.gz
+RUN mkdir /opt/jdk			
+RUN tar -zxf jdk-8u144-linux-x64.tar.gz -C /opt/jdk
+RUN update-alternatives --install /usr/bin/java java /opt/jdk/jdk1.8.0_144/bin/java 100
+RUN update-alternatives --install /usr/bin/javac javac /opt/jdk/jdk1.8.0_144/bin/javac 100
 RUN update-alternatives --display java
 
 

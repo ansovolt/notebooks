@@ -28,14 +28,14 @@ init(){
 
 build_image(){		
 	init	
-	echo "==>Building image {$IMAGE}..."	
-	docker build -t ${IMAGE} .			
+	echo "==>Building image ${TAGGED_IMAGE}..."	
+	docker build -t ${TAGGED_IMAGE} .			
 }
 
 start_container(){	
 	echo "==>Starting container {$CONTAINER}..."	
-	docker $(cfg) stop ${CONTAINER} &>/dev/null || true
-	docker $(cfg) rm ${CONTAINER} &>/dev/null || true
+	docker stop ${CONTAINER} &>/dev/null || true
+	docker rm ${CONTAINER} &>/dev/null || true
 	
 	docker run -d -p 8888:8888 -p 54321:54321 ${TAGGED_IMAGE}	 
 	#docker run -d -p 8888:8888 -p 54321:54321 -v //c/Users/asochal/volumes/notebooks:/home/jovyan/work ${TAGGED_IMAGE}	 
