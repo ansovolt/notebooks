@@ -3,7 +3,8 @@
 # These need to be adjusted per each dev environment
 #########################################################
 ROOT_VOLUME_MOUNT_DIR="/c/Users/asochal/volumes"
-APP_NAME="hqr-dev-2"
+NOTEBOOKS_DIR="/c/Users/asochal/projects/git/playground/ansosoft/notebooks/ntbs"
+APP_NAME="notebook"
 
 #########################################################
 # These are dynamically assigned by build process
