@@ -1,3 +1,5 @@
+#FROM ansosoft/notebooks_i:1
+
 # Copyright (c) Jupyter Development Team.
 # Distributed under the terms of the Modified BSD License.
 
@@ -98,7 +100,7 @@ COPY start.sh /usr/local/bin/
 COPY start-notebook.sh /usr/local/bin/
 COPY start-singleuser.sh /usr/local/bin/
 COPY jupyter_notebook_config.py /home/$NB_USER/.jupyter/
-COPY lib/utils.py /home/$NB_USER/work/utils.py
+COPY lib/ /home/$NB_USER/work/
 RUN chown -R $NB_USER:users /home/$NB_USER/.jupyter
 
 
@@ -127,7 +129,7 @@ RUN apt-get update && apt-get install -yq --no-install-recommends \
     inkscape \
     && apt-get clean && \
     rm -rf /var/lib/apt/lists/*
-	
+    
 ########################SCIPY########################
 
 USER root
@@ -217,18 +219,18 @@ RUN MPLBACKEND=Agg $CONDA_DIR/envs/python2/bin/python -c "import matplotlib.pypl
 RUN mkdir -p $HOME/.ipython/profile_default/startup
 COPY mplimporthook.py $HOME/.ipython/profile_default/startup/
 
-#USER root
+USER root
 
 # Install Python 2 kernel spec globally to avoid permission problems when NB_UID
 # switching at runtime and to allow the notebook server running out of the root
 # environment to find it. Also, activate the python2 environment upon kernel
 # launch.
-#RUN pip install kernda --no-cache && \
-#    $CONDA_DIR/envs/python2/bin/python -m ipykernel install && \
-#    kernda -o -y /usr/local/share/jupyter/kernels/python2/kernel.json && \
-#    pip uninstall kernda -y
-	
-	
+RUN pip install kernda --no-cache && \
+    $CONDA_DIR/envs/python2/bin/python -m ipykernel install && \
+    kernda -o -y /usr/local/share/jupyter/kernels/python2/kernel.json && \
+    pip uninstall kernda -y
+    
+    
 #######################SPARK & MESOS########################
 
 
@@ -239,7 +241,7 @@ USER root
 ENV APACHE_SPARK_VERSION 2.0.2
 ENV HADOOP_VERSION 2.7
 RUN wget --no-cookies --no-check-certificate --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u144-b01/090f390dda5b47b9b721c7dfaa008135/jdk-8u144-linux-x64.tar.gz -O jdk-8u144-linux-x64.tar.gz
-RUN mkdir /opt/jdk			
+RUN mkdir /opt/jdk          
 RUN tar -zxf jdk-8u144-linux-x64.tar.gz -C /opt/jdk
 RUN update-alternatives --install /usr/bin/java java /opt/jdk/jdk1.8.0_144/bin/java 100
 RUN update-alternatives --install /usr/bin/javac javac /opt/jdk/jdk1.8.0_144/bin/javac 100
@@ -305,7 +307,7 @@ RUN conda install --quiet --yes opencv
 #RUN mkdir $HOME/work/ocropus 
 #RUN cd $HOME/work/ocropus 
 #RUN git clone https://github.com/tmbdev/ocropy.git
-#RUN (cd ocropy/models && wget -nd http://www.tmbdev.net/en-default.pyrnn.gz)	
+#RUN (cd ocropy/models && wget -nd http://www.tmbdev.net/en-default.pyrnn.gz)   
 #RUN (cd ocropy && sudo python setup.py install)
 
 
