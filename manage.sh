@@ -39,7 +39,7 @@ start_container(){
 	
 	sleep 2
 	
-	docker run -d -p 8888:8888 -v /${NOTEBOOKS_DIR}:/home/jovyan/work --name ${CONTAINER} ${TAGGED_IMAGE}	
+	docker run -d -p 8888:8888 -v /${NOTEBOOKS_DIR}:/home/jovyan/work/ntbs --name ${CONTAINER} ${TAGGED_IMAGE}	
 	#docker run -d -p 8888:8888 -p 54321:54321 ${TAGGED_IMAGE}	 
 	#docker run -d -p 8888:8888 -p 54321:54321 -v //c/Users/asochal/volumes/notebooks:/home/jovyan/work ${TAGGED_IMAGE}	 
 	#docker $(cfg) run -d -e ${ENV_ROLES} -e ${ENV_PORT} -e ${ENV_SEED_PORT}  --link ${RABBITMQ_CONTAINER}:${RABBITMQ} --link ${REDIS_CONTAINER}:${REDIS} --link ${POSTGRES_CONTAINER}:${POSTGRES} --name ${WILDFLY_SPARK_HADOOP_CONTAINER}_${c} -p 808${c}:8080 -p 878${c}:8787 -p 999${c}:9990 -p 998${c}:9999 -p ${port}:${port} -v ${LINK_ROOT_VOLUME_MOUNT_DIR}/wildfly/logs/${c}:/opt/jboss/wildfly/standalone/log -v ${LINK_ROOT_VOLUME_MOUNT_DIR}/wildfly/deployments/${c}:/opt/jboss/wildfly/standalone/deployments -v ${LINK_ROOT_VOLUME_MOUNT_DIR}/spark:/spark ${WILDFLY_SPARK_HADOOP_TAGGED_IMAGE}					
