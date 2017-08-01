@@ -105,8 +105,9 @@
   COPY lib/ /home/$NB_USER/work/
   RUN chown -R $NB_USER:users /home/$NB_USER/.jupyter  
   RUN mkdir -p /home/$NB_USER/work/ntbs  
+  RUN mkdir -p /home/$NB_USER/work/data  
   RUN chown -R $NB_USER:users /home/$NB_USER
-
+  
   
   
   #######################OS########################
@@ -323,9 +324,9 @@
   RUN conda install --quiet --yes theano
   RUN conda install --quiet --yes keras=1.2.2
   RUN conda update dask
- 
-
-
+  
+  
+  
   
   #######################SWITCH TO NBUSER########################
   # Switch back to jovyan to avoid accidental container runs as root

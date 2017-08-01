@@ -3,7 +3,8 @@
 # These need to be adjusted per each dev environment
 #########################################################
 ROOT_VOLUME_MOUNT_DIR="/c/Users/asochal/volumes"
-NOTEBOOKS_DIR="/Users/admin/ansosoft/notebooks/ntbs"
+NOTEBOOKS_DIR="/c/Users/asochal/projects/git/playgroud/ansosoft/notebooks/ntbs"
+DATA_DIR="/c/Users/asochal/projects/git/playgroud/ansosoft/notebooks/data"
 APP_NAME="notebook"
 
 #########################################################
